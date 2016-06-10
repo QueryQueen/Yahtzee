@@ -10,7 +10,6 @@ public class Player {
     //each player has a name
     String name;
 
-
     //each turn they have a score
     int[] score = new int[5];
 

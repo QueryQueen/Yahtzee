@@ -44,11 +44,10 @@ public class Yahtzee extends Game {
         //the game consists of multiple turns which results in a turnscore
         //in each turn you are allowed to roll the dice three times
         System.out.println(player1.name + " is rolling the dice");
-        System.out.println("His score is");
-//        player1.score = myScoresheet.getTurnScore(dice);
         player1.score = myScoresheet.getTurnScore(dice);
+        System.out.println("Your result is: " + Arrays.toString(player1.score));
 
-        System.out.println(Arrays.toString(player1.score));
+
 
 
     }
