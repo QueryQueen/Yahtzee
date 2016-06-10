@@ -1,6 +1,7 @@
 package com.company;
 
 import java.awt.*;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -28,21 +29,6 @@ public class Yahtzee extends Game {
         }
     }
 
-
-
-
-
-
-
-
-
-    }
-
-    //fill the dice array with instances of Die
-
-
-
-
     //We also need to use a scoresheet
     Scoresheet myScoresheet = new Scoresheet();
 
@@ -52,7 +38,6 @@ public class Yahtzee extends Game {
     //We need a scanner to get userInput
     Scanner sc = new Scanner(System.in);
 
-
     //We need a method to play the game Yahtzee
     void playYahtzee(){
 
@@ -61,12 +46,9 @@ public class Yahtzee extends Game {
         System.out.println(player1.name + " is rolling the dice");
         System.out.println("His score is");
 //        player1.score = myScoresheet.getTurnScore(dice);
+        player1.score = myScoresheet.getTurnScore(dice);
 
-        int[] result = myScoresheet.getTurnScore(dice);
-        System.out.println(result);
-
-
-
+        System.out.println(Arrays.toString(player1.score));
 
 
     }

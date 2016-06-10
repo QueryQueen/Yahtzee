@@ -10,12 +10,9 @@ public class Die {
 
 
     int rollDice(){
-
-        if(hold != true){
             double x;
             x = Math.random() * 6 + 1;
             value = (int) x;
-        }
         return value;
     }
 
