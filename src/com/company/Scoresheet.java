@@ -17,23 +17,54 @@ public class Scoresheet {
     int[] getTurnScore(Die[] dice) {
         int[] result = new int[5];
 
-        for (Die die : dice) {
-            if (!die.hold) {
-                die.value = die.rollDice();
-                for (int i = 0; i < 5; i++) {
-                    result[i] = dice[i].value;
-                }
+        //roll 1
+        for (int i = 0; i < 5; i++) {
+            if (!dice[i].hold) {
+                dice[i].value = dice[i].rollDice();
+                result[i] = dice[i].value;
+            } else {
+                result[i] = dice[i].value;
             }
         }
-        //Print het resultaat
+
+        //Print the result of the first throw
         System.out.println("You rolled: " + Arrays.toString(result));
         rollCount++;
         System.out.println("you rolled the dice " + rollCount + " times");
-        System.out.println("Which die do you want to hold?");
 
-        String hold = sc.nextLine();
-        System.out.println("you want to hold " + hold);
-        
+        //ask which die the player wants to hold
+        System.out.println("Which die do you want to hold?");
+        int hold = sc.nextInt() - 1;
+        dice[hold].hold = true;
+
+        //roll second time
+        for (int i = 0; i < 5; i++) {
+            if (!dice[i].hold) {
+                dice[i].value = dice[i].rollDice();
+                result[i] = dice[i].value;
+            } else {
+                result[i] = dice[i].value;
+            }
+        }
+
+        System.out.println("You rolled: " + Arrays.toString(result));
+        rollCount++;
+        System.out.println("you rolled the dice " + rollCount + " times");
+
+        //ask which die the player wants to hold
+        System.out.println("Which die do you want to hold?");
+        int hold2 = sc.nextInt() - 1;
+        dice[hold2].hold = true;
+
+        //roll third time
+        for (int i = 0; i < 5; i++) {
+            if (!dice[i].hold) {
+                dice[i].value = dice[i].rollDice();
+                result[i] = dice[i].value;
+            } else {
+                result[i] = dice[i].value;
+            }
+        }
 
         return result;
         }
