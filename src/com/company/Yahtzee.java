@@ -50,19 +50,22 @@ public class Yahtzee extends Game {
             rounds++;
             System.out.println("We have played " + rounds + " rounds");
         }
+        getWinner(players);
         System.out.println("The game has ended");
         isOngoing = false;
     }
 
     private void doTurn(Player player) {
-        //free all dices
 
         System.out.println(player.name + " is rolling the dice");
         player.score = myScoresheet.getTurnResult(dice);
         System.out.println("Your score is: " + player.score);
+
         player.turnScores.add(player.score);
+        System.out.println("So far you have scored" + player.turnScores);
+
         player.totalScore = player.getTotalScore(player.turnScores);
-        System.out.println("Your score so far " + player.totalScore);
+        System.out.println("Your total score so far " + player.totalScore);
     }
 
 }

@@ -20,10 +20,9 @@ public class Player {
     int totalScore;
 
     int getTotalScore(ArrayList<Integer> turnScores) {
-        ArrayList<Integer> input = turnScores;
         int totalScore = 0;
-        for (Integer element : input) {
-            totalScore = +element;
+        for (Integer element : turnScores) {
+            totalScore += element;
         }
         return totalScore;
     }
