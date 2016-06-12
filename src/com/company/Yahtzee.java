@@ -42,8 +42,6 @@ public class Yahtzee extends Game {
             rounds++;
             System.out.println("We have played " + rounds + " rounds");
         }
-        getWinner(players);
-        System.out.println("The game has ended");
         isOngoing = false;
     }
 
