@@ -67,16 +67,16 @@ public class Scoresheet {
 
         while (hold > -1) {
             hold = sc.nextInt() - 1;
-            if (hold > 0 && hold < 5) {
+            if (hold > -1 && hold < 5) {
                 dice[hold].hold = true;
             }
         }
+        System.out.println("Dice hold value is" + dice[0].hold + dice[1].hold + dice[2].hold);
     }
 
     //for now, the score of 1 turn is calculated by summing all dices
     //later we can implement the Yahtzee rules for official scores
     int calcTurnScore(int[] diceResult) {
-        int[] input = diceResult;
         int sum = 0;
 
         for (int i : diceResult) {

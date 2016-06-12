@@ -42,13 +42,15 @@ public class Yahtzee extends Game {
 
         //the game consists of multiple turns which results in a turnscore
         //in each turn you are allowed to roll the dice three times
-        while (rounds < 7) {
+        while (rounds < 2) {
             doTurn(player1);
             doTurn(player2);
             doTurn(player3);
             rounds++;
             System.out.println("We have played " + rounds + " rounds");
         }
+
+        isOngoing = false;
     }
 
     private void doTurn(Player player) {

@@ -14,6 +14,17 @@ public class Game {
         String name = sc.nextLine();
         return name;
     }
+
+    //TODO put the players in an array of players to compare scores and declare the winner
+    String getWinner(Player[] players){
+        for(int i = 0; i < players.length; i++){
+            System.out.println("The score of " + players[i].name + " = " + players[i].totalScore);
+        }
+        String winnerName = "";
+        System.out.println("The winner is" + winnerName);
+
+        return winnerName;
+    }
     //TODO optioneel: maak een quitGame methode om ten alle tijden het spel te stoppen
     //TODO maak getWinner methode (highest total score = winnaar)
 }
