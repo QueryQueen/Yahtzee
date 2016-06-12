@@ -14,12 +14,6 @@ public class Yahtzee extends Game {
     //so we can make an array for 5 objects of Die
     Die[] dice = new Die[5];
 
-    //First we need some interested players
-    //object player is constructed with a String name
-    Player player1 = new Player();
-    Player player2 = new Player();
-    Player player3 = new Player();
-
     //constructor for class Yahtzee
     //we fill the dice array with 5 instances of die
     Yahtzee() {
@@ -27,6 +21,14 @@ public class Yahtzee extends Game {
             dice[i] = new Die();
         }
     }
+
+    //First we need some interested players
+    //object player is constructed with a String name
+    Player player1 = new Player();
+    Player player2 = new Player();
+    Player player3 = new Player();
+
+    Player[] players = {player1, player2, player3};
 
     //We also need to use a scoresheet to calculate the scores
     Scoresheet myScoresheet = new Scoresheet();
@@ -43,13 +45,12 @@ public class Yahtzee extends Game {
         //the game consists of multiple turns which results in a turnscore
         //in each turn you are allowed to roll the dice three times
         while (rounds < 2) {
-            doTurn(player1);
-            doTurn(player2);
-            doTurn(player3);
+            for(Player player : players)
+            doTurn(player);
             rounds++;
             System.out.println("We have played " + rounds + " rounds");
         }
-
+        System.out.println("The game has ended");
         isOngoing = false;
     }
 
