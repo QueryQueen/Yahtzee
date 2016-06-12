@@ -13,82 +13,78 @@ public class Scoresheet {
     //We need a scanner to get userInput
     Scanner sc = new Scanner(System.in);
 
-
-    int[] getTurnScore(Die[] dice) {
+    //to get the result of 1 turn, the player needs to roll the dice max 3 times
+    //after each roll you can decide which dice you want to hold
+    int getTurnResult(Die[] dice) {
         int[] result = new int[5];
+        int score;
 
-        //roll 1
-        for (int i = 0; i < 5; i++) {
-            if (!dice[i].hold) {
-                dice[i].value = dice[i].rollDice();
-                result[i] = dice[i].value;
-            } else {
-                result[i] = dice[i].value;
-            }
+        //in each turn you are allowed to throw the dice 3 times
+        for(int i = 0; i < 2; i++){
+            rollDiceTurn(dice);
+            result = getDiceValues(dice);
+            System.out.println("You rolled" + Arrays.toString(result));
+            rollCount++;
+            System.out.println("you rolled the dice " + rollCount + " times");
+            holdDice(dice);
         }
-
-        //Print the result of the first throw
-        System.out.println("You rolled: " + Arrays.toString(result));
-        rollCount++;
-        System.out.println("you rolled the dice " + rollCount + " times");
-
-        //ask which die the player wants to hold
-        System.out.println("Which die do you want to hold?");
-        int hold = sc.nextInt() - 1;
-        dice[hold].hold = true;
-
-        //roll second time
-        for (int i = 0; i < 5; i++) {
-            if (!dice[i].hold) {
-                dice[i].value = dice[i].rollDice();
-                result[i] = dice[i].value;
-            } else {
-                result[i] = dice[i].value;
-            }
-        }
-
-        System.out.println("You rolled: " + Arrays.toString(result));
-        rollCount++;
-        System.out.println("you rolled the dice " + rollCount + " times");
-
-        //ask which die the player wants to hold
-        System.out.println("Which die do you want to hold?");
-        int hold2 = sc.nextInt() - 1;
-        dice[hold2].hold = true;
-
-        //roll third time
-        for (int i = 0; i < 5; i++) {
-            if (!dice[i].hold) {
-                dice[i].value = dice[i].rollDice();
-                result[i] = dice[i].value;
-            } else {
-                result[i] = dice[i].value;
-            }
-        }
-
-        return result;
-        }
-
+        rollCount = 0;
+        System.out.println("The result of your turn is" + Arrays.toString(result));
+        freeDice(dice);
+        score = calcTurnScore(result);
+        return score;
     }
 
+    private int[] getDiceValues(Die[] dice) {
+        int[] diceValues = new int[5];
 
-            //in een beurt mag je maar 3 keer rollen
-//        if (rollCount < 3) {
-//            for (int i = 0; i < 5; i++) {
-//                if (!dice[i].hold) {
-//                    dice[i].value = dice[i].rollDice();
-//                    result[i] = dice[i].value;
-//                }
-//            }
-//        } else {
-//            System.out.println("You rolled the dice 3 times, next player please");
-//        }
-//        //Print het resultaat
-//        System.out.println("You rolled: " + Arrays.toString(result));
-//        rollCount++;
-//        System.out.println("you rolled the dice " + rollCount + " times");
-//        return result;
-//    }
+        for (int i = 0; i < dice.length; i++) {
+            diceValues[i] = dice[i].value;
+        }
+        return diceValues;
+    }
+
+    private void freeDice(Die[] dice) {
+        for(Die x : dice){
+            x.hold = false;
+        }
+    }
+
+    void rollDiceTurn(Die[] input) {
+        int[] rollDiceResult = new int[5];
+
+        for (Die dice : input) {
+            if (!dice.hold) {
+                dice.value = dice.rollDice();
+            }
+        }
+    }
+
+    void holdDice(Die[] dice) {
+
+        System.out.println("Which die do you want to hold? Type -1 to finish");
+        int hold = 0;
+
+        while (hold > -1) {
+            hold = sc.nextInt() - 1;
+            if (hold > 0 && hold < 5) {
+                dice[hold].hold = true;
+            }
+        }
+    }
+
+    //for now, the score of 1 turn is calculated by summing all dices
+    //later we can implement the Yahtzee rules for official scores
+    int calcTurnScore(int[] diceResult) {
+        int[] input = diceResult;
+        int sum = 0;
+
+        for (int i : diceResult) {
+            sum += i;
+        }
+        return sum;
+    }
+}
 
 
 

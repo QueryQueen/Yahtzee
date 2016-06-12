@@ -11,20 +11,21 @@ public class Player {
     String name;
 
     //each turn they have a score
-    int[] score = new int[5];
+    int score;
 
     //we keep track of their turnscores in an ArrayList
-    ArrayList<Scoresheet> turnScores = new ArrayList<Scoresheet>();
+    ArrayList<Integer> turnScores = new ArrayList<Integer>();
 
     //and their total score to determine the winner
     int totalScore;
 
-
-
-
-
-
-
-
-
+    int getTotalScore(ArrayList<Integer> turnScores) {
+        ArrayList<Integer> input = turnScores;
+        int totalScore = 0;
+        for (Integer element : input) {
+            totalScore = +element;
+        }
+        return totalScore;
+    }
 }
+

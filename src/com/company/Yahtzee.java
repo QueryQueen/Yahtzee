@@ -16,7 +16,6 @@ public class Yahtzee extends Game {
 
     //First we need some interested players
     //object player is constructed with a String name
-    //TODO: make it so that players can type their name, and this name is used to construct the player
     Player player1 = new Player();
     Player player2 = new Player();
     Player player3 = new Player();
@@ -29,7 +28,7 @@ public class Yahtzee extends Game {
         }
     }
 
-    //We also need to use a scoresheet
+    //We also need to use a scoresheet to calculate the scores
     Scoresheet myScoresheet = new Scoresheet();
 
     //Finally we need to keep track of the number of rounds, max 7 rounds per game of Yahtzee
@@ -39,17 +38,28 @@ public class Yahtzee extends Game {
     Scanner sc = new Scanner(System.in);
 
     //We need a method to play the game Yahtzee
-    void playYahtzee(){
+    void playYahtzee() {
 
         //the game consists of multiple turns which results in a turnscore
         //in each turn you are allowed to roll the dice three times
-        System.out.println(player1.name + " is rolling the dice");
-        player1.score = myScoresheet.getTurnScore(dice);
-        System.out.println("Your result is: " + Arrays.toString(player1.score));
+        while (rounds < 7) {
+            doTurn(player1);
+            doTurn(player2);
+            doTurn(player3);
+            rounds++;
+            System.out.println("We have played " + rounds + " rounds");
+        }
+    }
 
+    private void doTurn(Player player) {
+        //free all dices
 
-
-
+        System.out.println(player.name + " is rolling the dice");
+        player.score = myScoresheet.getTurnResult(dice);
+        System.out.println("Your score is: " + player.score);
+        player.turnScores.add(player.score);
+        player.totalScore = player.getTotalScore(player.turnScores);
+        System.out.println("Your score so far " + player.totalScore);
     }
 
 }
