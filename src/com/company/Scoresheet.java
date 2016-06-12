@@ -7,7 +7,6 @@ import java.util.Scanner;
  * Created by Joedid on 10/06/16.
  */
 public class Scoresheet {
-    int turnScore;
     int rollCount = 0;
 
     //We need a scanner to get userInput
@@ -16,11 +15,12 @@ public class Scoresheet {
     //to get the result of 1 turn, the player needs to roll the dice max 3 times
     //after each roll you can decide which dice you want to hold
     int getTurnResult(Die[] dice) {
+
         int[] result = new int[5];
         int score;
 
-        //in each turn you are allowed to throw the dice 3 times
-        for(int i = 0; i < 2; i++){
+        //in each turn you are allowed to roll the dice 3 times
+        for(int i = 0; i < 3; i++){
             rollDiceTurn(dice);
             result = getDiceValues(dice);
             System.out.println("You rolled" + Arrays.toString(result));
@@ -71,7 +71,6 @@ public class Scoresheet {
                 dice[hold].hold = true;
             }
         }
-        System.out.println("Dice hold value is" + dice[0].hold + dice[1].hold + dice[2].hold);
     }
 
     //for now, the score of 1 turn is calculated by summing all dices

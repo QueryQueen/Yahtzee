@@ -1,8 +1,6 @@
 package com.company;
 
 import java.awt.*;
-import java.util.Arrays;
-import java.util.Scanner;
 
 /**
  * Created by Joedid on 10/06/16.
@@ -13,31 +11,25 @@ public class Yahtzee extends Game {
     //They belong together als a collection of die
     //so we can make an array for 5 objects of Die
     Die[] dice = new Die[5];
+    Player[] players = new Player[3];
 
     //constructor for class Yahtzee
     //we fill the dice array with 5 instances of die
+    //and we fill the player array with players
     Yahtzee() {
         for (int i = 0; i < 5; i++) {
             dice[i] = new Die();
         }
+        for (int i = 0; i < players.length; i++){
+            players[i] = new Player();
+        }
     }
-
-    //First we need some interested players
-    //object player is constructed with a String name
-    Player player1 = new Player();
-    Player player2 = new Player();
-    Player player3 = new Player();
-
-    Player[] players = {player1, player2, player3};
 
     //We also need to use a scoresheet to calculate the scores
     Scoresheet myScoresheet = new Scoresheet();
 
     //Finally we need to keep track of the number of rounds, max 7 rounds per game of Yahtzee
     int rounds = 0;
-
-    //We need a scanner to get userInput
-    Scanner sc = new Scanner(System.in);
 
     //We need a method to play the game Yahtzee
     void playYahtzee() {

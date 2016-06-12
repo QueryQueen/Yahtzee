@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Created by Joedid on 10/06/16.
@@ -25,6 +26,13 @@ public class Player {
             totalScore += element;
         }
         return totalScore;
+    }
+
+    String askName() {
+        System.out.println("What is your name?");
+        Scanner sc = new Scanner(System.in);
+        String name = sc.nextLine();
+        return name;
     }
 }
 

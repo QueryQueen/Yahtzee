@@ -6,20 +6,18 @@ public class Main {
     public static void main(String[] args) {
 
         //First we have to initiate a new game of Yahtzee
+        //In the constructor 5 dice and 3 players are initialised and stored in an array
         Yahtzee myYahtzee = new Yahtzee();
 
-        //While the game is ongoing, we keep having new rounds
-        //while(myYahtzee.isOngoing = true){
+        //We would like to know their names
+        for(Player player : myYahtzee.players){
+            player.name = player.askName();
+        }
+        //And welcome them to the game
+        System.out.println("Welcome to the game " + myYahtzee.players[0].name + ", " + myYahtzee.players[1].name + " & " + myYahtzee.players[2].name);
 
-        myYahtzee.player1.name = myYahtzee.askName();
-        myYahtzee.player2.name = myYahtzee.askName();
-        myYahtzee.player3.name = myYahtzee.askName();
-        System.out.println("Welcome to the game " +myYahtzee.player1.name +", " + myYahtzee.player2.name + " & " + myYahtzee.player3.name);
-
+        //We will start to play Yahtzee!
         myYahtzee.playYahtzee();
-
-
-
         }
 
 }
