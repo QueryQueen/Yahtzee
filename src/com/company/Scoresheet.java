@@ -24,9 +24,9 @@ public class Scoresheet {
             rollDiceTurn(dice);
             result = getDiceValues(dice);
             System.out.println("You rolled" + Arrays.toString(result));
+            holdDice(dice);
             rollCount++;
             System.out.println("you rolled the dice " + rollCount + " times");
-            holdDice(dice);
         }
         rollCount = 0;
         System.out.println("The result of your turn is" + Arrays.toString(result));
