@@ -41,8 +41,7 @@ public class ScoresheetTest {
     @org.junit.Test
     public void largeStraightBad() throws Exception {
         Scoresheet tested = new Scoresheet();
-        ArrayList<Integer> given = new ArrayList<Integer>(Arrays.asList(1,1,2,4,5));
-
+        ArrayList<Integer> given = new ArrayList<Integer>(Arrays.asList(1,3,2,3,5));
         assertEquals(false, tested.largeStraight(given));
     }
 

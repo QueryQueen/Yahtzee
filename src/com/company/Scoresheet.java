@@ -33,6 +33,7 @@ public class Scoresheet {
                 holdDice(dice);
             }
         }
+
         rollCount = 0;
         System.out.println("The result of your turn is" + Arrays.toString(getDiceValues(dice)));
         freeDice(dice);
@@ -88,13 +89,10 @@ public class Scoresheet {
             yahtzeeCheck.add(diceResult[i]);
         }
 
-        boolean largeStraight = largeStraight(yahtzeeCheck);
-        boolean yahtzee = yahtzee(yahtzeeCheck);
-
-        if(largeStraight){
+        if(largeStraight(yahtzeeCheck)){
             System.out.println("Category: large straigth");
             score = 40;
-        } else if(yahtzee){
+        } else if(yahtzee(yahtzeeCheck)){
             System.out.println("Category: yahtzee!");
             score = 50;
         } else {
@@ -105,6 +103,7 @@ public class Scoresheet {
             }
         return score;
         }
+
 
     //the sole purpose of this method is to check for Yahtzee
     boolean yahtzee(ArrayList<Integer> yahtzeeCheck){

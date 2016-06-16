@@ -1,6 +1,10 @@
 package com.company;
 import java.util.Scanner;
 
+/**
+ * Created by Joedid on 10/06/16.
+ */
+
 public class Main {
 
     public static void main(String[] args) {
